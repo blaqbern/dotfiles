@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/blaqbern/code'
+let g:netrw_dirhist_2='/home/blaqbern/code/react-redux-starter'
+let g:netrw_dirhist_3='/home/blaqbern/code/noaa'
+let g:netrw_dirhist_4='/home/blaqbern/code/noaa/web'
+let g:netrw_dirhist_5='/home/blaqbern/code/noaa/web/modules'
+let g:netrw_dirhist_6='/home/blaqbern/code/noaa/web/modules/custom'
+let g:netrw_dirhist_7='/home/blaqbern/code/noaa/web/modules/custom/fishwatch_service'
+let g:netrw_dirhist_8='/home/blaqbern/.vim/colors'
