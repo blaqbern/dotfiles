@@ -1,3 +1,5 @@
+setopt prompt_subst
+
 function git_branch_status {
   if [[ -n `git branch 2> /dev/null | grep develop` ]]; then
     master='develop'
@@ -27,13 +29,13 @@ function git_branch_status {
 function git_status_info {
   STATUS="$(git status 2> /dev/null)"
   if [[ $STATUS =~ 'Changes to be committed:' ]]; then
-    statusicons+="%{$fg[green]%}•%{$reset_color%}"
+    statusicons+="%{$fg[green]%}✘%{$reset_color%}"
   fi
   if [[ $STATUS =~ 'Changes not staged for commit:' ]]; then
-    statusicons+="%{$fg[yellow]%}•%{$reset_color%}"
+    statusicons+="%{$fg[yellow]%}✘%{$reset_color%}"
   fi
   if [[ $STATUS =~ 'Untracked files:' ]]; then
-    statusicons+="%{$fg[red]%}•%{$reset_color%}"
+    statusicons+="%{$fg[red]%}✘%{$reset_color%}"
   fi
 
   if [[ -n $statusicons ]]; then
@@ -47,4 +49,5 @@ function git_stashed_changes {
   fi
 }
 
-GIT_PROMPT="$(git_branch_status)$vcs_info_msg_0_$(git_status_info)$(git_stashed_changes)"
+PROMPT='%{$fg[blue]%}%~%{$fg[cyan]%} ➸ %{$reset_color%}'
+RPROMPT='$(git_branch_status)$vcs_info_msg_0_$(git_status_info)$(git_stashed_changes)'
