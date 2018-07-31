@@ -57,9 +57,6 @@ endif
 let g:ale_sign_error = '》'
 " other options: ⊳⨯∗⊱
 
-highlight ALEErrorSign guifg=#000000 guibg=#dfaf00
-highlight ALEWarningSign guifg=#000000 guibg=#dfaf00
-
 let g:airline_theme = 'minimalist'
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -82,14 +79,18 @@ let g:airline_section_error = airline#section#create_right(['ALE'])
 let g:ale_linters = { 'typescript': ['tslint', 'tsserver'] }
 
 set termguicolors
+
 colorscheme libertine
 highlight CursorLine guibg=#303030
 
 highlight Comment gui=italic
 highlight NonText guifg=#000000
 
-set colorcolumn=80
+set colorcolumn=80,99
 highlight ColorColumn guibg=#2f2f2f
+
+highlight ALEError guifg=#ce253e gui=bold
+highlight ALEErrorSign guifg=#ce253e gui=bold
 
 set tabstop=2
 set softtabstop=2
