@@ -6,7 +6,7 @@ if &compatible
   set nocompatible
 endif
 
-set runtimepath+=~/code/dotfiles/vim/bundle/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
 set runtimepath+=/usr/local/opt/fzf
 
 if dein#load_state('~/.vim/bundle')
@@ -20,7 +20,7 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('tpope/vim-commentary')
 
-  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 
   call dein#add('airblade/vim-gitgutter')

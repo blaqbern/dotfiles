@@ -1,9 +1,10 @@
-DOTFILES=${funcsourcetrace[1]%/*}
+DOTFILES=~/code/dotfiles
 
 # prepend custom zsh config to ~/.zshrc
 {echo "source $DOTFILES/zshrc"; cat ~/.zshrc;} >! temp && mv temp ~/.zshrc
 
 # append custom gitconfig to existing ~/.gitconfig
+printf "\n" >> ~/.gitconfig
 cat $DOTFILES/gitconfig >> ~/.gitconfig
 
 # dein - neovim plugin manager
@@ -20,4 +21,4 @@ echo "source $DOTFILES/init.vim" >! ~/.config/nvim/init.vim
 echo "source $DOTFILES/init.vim" >! ~/.vimrc
 
 # change colorscheme for vim to distinguish from nvim
-echo "coloscheme sierra" >> ~/.vimrc
+echo "colorscheme sierra" >> ~/.vimrc
