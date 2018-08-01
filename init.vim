@@ -6,51 +6,51 @@ if &compatible
   set nocompatible
 endif
 
- set runtimepath+=/Users/chrisblackburn/.vim/bundle/repos/github.com/Shougo/dein.vim
- set runtimepath+=/usr/local/opt/fzf
+set runtimepath+=~/code/dotfiles/vim/bundle/repos/github.com/Shougo/dein.vim
+set runtimepath+=/usr/local/opt/fzf
 
- if dein#load_state('/Users/chrisblackburn/.vim/bundle')
-   call dein#begin('/Users/chrisblackburn/.vim/bundle')
+if dein#load_state('~/.vim/bundle')
+  call dein#begin('~/.vim/bundle')
 
-   " Let dein manage dein
-   call dein#add('/Users/chrisblackburn/.vim/bundle/repos/github.com/Shougo/dein.vim')
+  " Let dein manage dein
+  " call dein#add('~/vim/bundle/repos/github.com/Shougo/dein.vim')
 
-   call dein#add('scrooloose/nerdtree')
-   call dein#add('tpope/vim-surround')
-   call dein#add('jiangmiao/auto-pairs')
-   call dein#add('tpope/vim-commentary')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('tpope/vim-surround')
+  call dein#add('jiangmiao/auto-pairs')
+  call dein#add('tpope/vim-commentary')
 
-   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
-   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 
-   call dein#add('airblade/vim-gitgutter')
-   call dein#add('vim-airline/vim-airline')
-   call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
 
-   call dein#add('pangloss/vim-javascript')
-   call dein#add('mxw/vim-jsx')
-   call dein#add('leafgarland/typescript-vim')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('mxw/vim-jsx')
+  call dein#add('leafgarland/typescript-vim')
 
-   call dein#add('w0rp/ale')
+  call dein#add('w0rp/ale')
 
-   " themes
-   call dein#add('nightsense/vrunchbang')
-   call dein#add('AlessandroYorba/Sierra')
-   call dein#add('AlessandroYorba/Libertine')
-   call dein#add('AlessandroYorba/Arcadia')
-   call dein#add('AlessandroYorba/Despacio')
+  " themes
+  call dein#add('nightsense/vrunchbang')
+  call dein#add('AlessandroYorba/Sierra')
+  call dein#add('rdavison/Libertine')
+  call dein#add('AlessandroYorba/Arcadia')
+  call dein#add('AlessandroYorba/Despacio')
 
-   call dein#end()
-   call dein#save_state()
- endif
+  call dein#end()
+  call dein#save_state()
+endif
 
- filetype plugin indent on
- syntax enable
+filetype plugin indent on
+syntax enable
 
- " Install new plugins on startup.
- if dein#check_install()
-   call dein#install()
- endif
+" Install new plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
 
 "End dein Scripts-------------------------
 
@@ -183,4 +183,4 @@ inoremap jk <esc>
 " Autocommands
 autocmd FileType javascript nnoremap <buffer> cl iconsole.log()<esc>i
 
-set directory^=$HOME/.vim/swap_files//
+set directory^=$HOME/.vim/swap_files/
