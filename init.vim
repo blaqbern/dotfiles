@@ -12,15 +12,17 @@ set runtimepath+=/usr/local/opt/fzf
 if dein#load_state('~/.vim/bundle')
   call dein#begin('~/.vim/bundle')
 
+  " REMOVE??
   " Let dein manage dein
   " call dein#add('~/vim/bundle/repos/github.com/Shougo/dein.vim')
+  " /REMOVE
 
   call dein#add('scrooloose/nerdtree')
   call dein#add('tpope/vim-surround')
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('tpope/vim-commentary')
 
-  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+  " make sure fzf and ripgrep are installed (brew instal <pkg name>)
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 
   call dein#add('airblade/vim-gitgutter')
@@ -53,6 +55,10 @@ if dein#check_install()
 endif
 
 "End dein Scripts-------------------------
+
+" FZF help3ers ---------------------------------------------------------------
+nnoremap <C-p> :Files<cr>
+nnoremap <C-g> :Rg<cr>
 
 let g:ale_sign_error = '》'
 " other options: ⊳⨯∗⊱
