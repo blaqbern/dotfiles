@@ -17,6 +17,7 @@ if dein#load_state('~/.vim/bundle')
   " call dein#add('~/vim/bundle/repos/github.com/Shougo/dein.vim')
   " /REMOVE
 
+  call dein#add('Shougo/deoplete.nvim')
   call dein#add('scrooloose/nerdtree')
   call dein#add('tpope/vim-surround')
   call dein#add('jiangmiao/auto-pairs')
@@ -59,6 +60,8 @@ endif
 " FZF help3ers ---------------------------------------------------------------
 nnoremap <C-p> :Files<cr>
 nnoremap <C-g> :Rg<cr>
+
+let g:deoplete#enable_at_startup = 1
 
 let g:ale_sign_error = '》'
 " other options: ⊳⨯∗⊱
@@ -121,11 +124,6 @@ nnoremap <Down> <nop>
 nnoremap <Left> <nop>
 nnoremap <Right> <nop>
 
-inoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Left> <nop>
-inoremap <Right> <nop>
-
 " set leader to `,`
 let mapleader = ','
 
@@ -154,6 +152,12 @@ nnoremap J Lzz
 vnoremap J Lzz
 nnoremap K Hzz
 vnoremap K Hzz
+
+" easy scroll for completion list
+inoremap <down> <C-n>
+inoremap <up> <C-p>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
 
 " jump to end/beggining of line
 nnoremap H 0w
