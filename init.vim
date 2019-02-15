@@ -37,11 +37,13 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('w0rp/ale')
 
   " themes
-  call dein#add('nightsense/vrunchbang')
-  call dein#add('AlessandroYorba/Sierra')
   call dein#add('rdavison/Libertine')
+  call dein#add('AlessandroYorba/Sierra')
   call dein#add('AlessandroYorba/Arcadia')
   call dein#add('AlessandroYorba/Despacio')
+  call dein#add('nightsense/vrunchbang')
+  call dein#add('nightsense/forgotten')
+  call dein#add('nightsense/office')
 
   call dein#end()
   call dein#save_state()
