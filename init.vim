@@ -59,10 +59,6 @@ endif
 
 "End dein Scripts-------------------------
 
-" FZF help3ers ---------------------------------------------------------------
-nnoremap <C-p> :Files<cr>
-nnoremap <C-g> :Rg<cr>
-
 let g:deoplete#enable_at_startup = 1
 
 let g:ale_sign_error = '》'
@@ -128,6 +124,10 @@ nnoremap <Right> <nop>
 
 " set leader to `,`
 let mapleader = ','
+
+" FZF help3ers
+nnoremap <C-p> :Files<cr>
+nnoremap <leader>r :Rg<cr>
 
 " edit vimrc file
 nnoremap <leader>ev :vs $MYVIMRC<cr>
