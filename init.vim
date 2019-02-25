@@ -25,6 +25,7 @@ if dein#load_state('~/.vim/bundle')
 
   " make sure fzf and ripgrep are installed (brew instal <pkg name>)
   call dein#add('junegunn/fzf.vim', {'depends' : 'fzf'})
+  call dein#add('wincent/ferret')
 
   call dein#add('airblade/vim-gitgutter')
   call dein#add('vim-airline/vim-airline')
@@ -128,6 +129,7 @@ let mapleader = ','
 " FZF help3ers
 nnoremap <C-p> :Files<cr>
 nnoremap <leader>r :Rg<cr>
+nnoremap <leader>e :Acks<space>
 
 " edit vimrc file
 nnoremap <leader>ev :vs $MYVIMRC<cr>
