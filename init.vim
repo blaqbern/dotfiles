@@ -24,7 +24,7 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('tpope/vim-commentary')
 
   " make sure fzf and ripgrep are installed (brew instal <pkg name>)
-  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  call dein#add('junegunn/fzf.vim', {'depends' : 'fzf'})
 
   call dein#add('airblade/vim-gitgutter')
   call dein#add('vim-airline/vim-airline')
