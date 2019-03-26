@@ -198,3 +198,8 @@ inoremap jk <esc>
 autocmd FileType javascript nnoremap <buffer> cl iconsole.log()<esc>i
 
 set directory^=$HOME/.vim/swap_files/
+
+augroup MyConfig
+  autocmd!
+  autocmd FileType qf setlocal wrap
+augroup END
