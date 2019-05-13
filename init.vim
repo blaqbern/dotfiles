@@ -13,6 +13,8 @@ if dein#load_state('~/.vim/bundle')
   call dein#begin('~/.vim/bundle')
 
   call dein#add('Shougo/deoplete.nvim')
+  call dein#add('HerringtonDarkholme/yats.vim')
+  call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   call dein#add('scrooloose/nerdtree')
   call dein#add('tpope/vim-surround')
   call dein#add('jiangmiao/auto-pairs')
@@ -29,7 +31,6 @@ if dein#load_state('~/.vim/bundle')
 
   call dein#add('pangloss/vim-javascript')
   call dein#add('mxw/vim-jsx')
-  call dein#add('leafgarland/typescript-vim')
 
   call dein#add('w0rp/ale')
 
