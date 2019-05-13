@@ -12,16 +12,12 @@ set runtimepath+=/usr/local/opt/fzf
 if dein#load_state('~/.vim/bundle')
   call dein#begin('~/.vim/bundle')
 
-  " REMOVE??
-  " Let dein manage dein
-  " call dein#add('~/vim/bundle/repos/github.com/Shougo/dein.vim')
-  " /REMOVE
-
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('scrooloose/nerdtree')
   call dein#add('tpope/vim-surround')
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('tpope/vim-commentary')
+  call dein#add('ervandew/supertab')
 
   " make sure fzf and ripgrep are installed (brew instal <pkg name>)
   call dein#add('junegunn/fzf.vim', {'depends' : 'fzf'})
@@ -85,6 +81,8 @@ call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
 let g:airline_section_error = airline#section#create_right(['ALE'])
 
 let g:ale_linters = { 'typescript': ['tslint', 'tsserver'] }
+
+let g:SuperTabDefaultCompletionType = '<c-n>'
 
 set termguicolors
 
@@ -180,6 +178,9 @@ nnoremap = ddkP
 " keep selection on indent/outdent
 vnoremap > >gv
 vnoremap < <gv
+
+" jump to merge conflict
+nnoremap <leader>m /\(<<<<<<<\\|>>>>>>>\)<cr>
 
 " hop to prev/next error
 nnoremap <leader>< :lprev<cr>
