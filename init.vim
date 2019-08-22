@@ -14,7 +14,6 @@ if dein#load_state('~/.vim/bundle')
 
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('HerringtonDarkholme/yats.vim')
-  call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
   call dein#add('scrooloose/nerdtree')
   call dein#add('tpope/vim-surround')
   call dein#add('jiangmiao/auto-pairs')
@@ -30,9 +29,10 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('vim-airline/vim-airline-themes')
 
   call dein#add('pangloss/vim-javascript')
+  call dein#add('jparise/vim-graphql')
   call dein#add('mxw/vim-jsx')
 
-  call dein#add('w0rp/ale')
+  call dein#add('dense-analysis/ale')
 
   " themes
   call dein#add('rdavison/Libertine')
@@ -57,10 +57,11 @@ endif
 
 "End dein Scripts-------------------------
 
-let g:deoplete#enable_at_startup = 1
+let g:ale_sign_error = '》' " other options: ⊳⨯∗⊱
+let g:ale_linters = { 'typescript': ['eslint', 'tsserver'] }
 
-let g:ale_sign_error = '》'
-" other options: ⊳⨯∗⊱
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('sources', { '_': ['ale'] })
 
 let g:airline_theme = 'minimalist'
 let g:airline_left_sep = ''
@@ -68,7 +69,7 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
-let g:airline_extensions = ['tabline']
+let g:airline_extensions = ['tabline', 'ale']
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
@@ -76,12 +77,7 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
-call airline#parts#define_function('ALE', 'ALEGetStatusLine')
-call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
-
-let g:airline_section_error = airline#section#create_right(['ALE'])
-
-let g:ale_linters = { 'typescript': ['tslint', 'tsserver'] }
+let g:airline#extensions#ale#enabled = 1
 
 let g:SuperTabDefaultCompletionType = '<c-n>'
 
@@ -195,6 +191,8 @@ nnoremap <C-l> <C-w>l
 
 " map `jk` to <esc> in insert mode
 inoremap jk <esc>
+
+nnoremap <leader>p :! yarn pretty-fix<cr>
 
 " Autocommands
 autocmd FileType javascript nnoremap <buffer> cl iconsole.log()<esc>i
