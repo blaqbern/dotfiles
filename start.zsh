@@ -21,4 +21,5 @@ echo "source $DOTFILES/init.vim" >! ~/.config/nvim/init.vim
 echo "source $DOTFILES/init.vim" >! ~/.vimrc
 
 # change colorscheme for vim to distinguish from nvim
+curl https://raw.githubusercontent.com/AlessandroYorba/Sierra/master/colors/sierra.vim > ~/.vim/colors/sierra.vim
 echo "colorscheme sierra" >> ~/.vimrc

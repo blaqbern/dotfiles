@@ -80,7 +80,7 @@ function git_status_info {
 
 function git_stashed_changes {
   if [[ -f '.git/refs/stash' ]]; then
-    echo " ✒" # ✎ ✍ ✐ ⏞
+    echo " ✎" # "✒ "✍ ✐ ⏞
   fi
 }
 

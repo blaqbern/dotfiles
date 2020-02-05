@@ -59,6 +59,7 @@ endif
 
 let g:ale_sign_error = '》' " other options: ⊳⨯∗⊱
 let g:ale_linters = { 'typescript': ['eslint', 'tsserver'] }
+let g:ale_set_balloons = 1
 
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('sources', { '_': ['ale'] })
@@ -110,7 +111,7 @@ set wildmenu
 set splitbelow
 set splitright
 set hidden
-set mouse=""
+set mouse=a
 
 " disable arrow keys
 nnoremap <Up> <nop>
@@ -191,6 +192,10 @@ nnoremap <C-l> <C-w>l
 
 " map `jk` to <esc> in insert mode
 inoremap jk <esc>
+
+" ale: show docs for what's currently under the cursor (ts only)
+nnoremap <leader>ds :ALEDocumentation<cr>
+nnoremap <leader>gd :ALEGoToDefinition<cr>
 
 nnoremap <leader>p :! yarn pretty-fix<cr>
 
