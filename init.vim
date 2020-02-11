@@ -35,6 +35,7 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('dense-analysis/ale')
 
   " themes
+  " call dein#add('blaqbern/eclectic-vim')
   call dein#add('rdavison/Libertine')
   call dein#add('AlessandroYorba/Sierra')
   call dein#add('AlessandroYorba/Arcadia')
@@ -65,37 +66,62 @@ let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('sources', { '_': ['ale'] })
 
 let g:airline_theme = 'minimalist'
+
+let g:airline_extensions = ['tabline', 'ale']
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#ale#enabled = 1
+
+function! AirlineThemePatch(palette) 
+  let s:bg_dark = "#2a2d30"
+  let s:bg = "#36393e"
+  let s:normal = "#469c91"
+  let s:insert = "#cea149"
+  let s:visual = "#9c8db1"
+  let s:fg = "#d9dec3"
+  let s:accent = "#b75c8b"
+  let s:error = "#d72862"
+  let s:warning = "#f6b961"
+
+  let s:n_a = [s:bg, s:normal, "", ""]
+  let s:i_a = [s:bg, s:insert, "", ""]
+  let s:v_a = [s:bg, s:visual, "", ""]
+  let s:b = [s:fg, s:bg_dark, "", ""]
+  let s:c = [s:normal, s:bg_dark, "", ""]
+  let s:x = [s:fg, s:bg, "", ""]
+  let s:y = [s:normal, s:bg_dark, "", ""]
+  let s:z = [s:accent, s:bg_dark, "", ""]
+
+  let a:palette.normal = airline#themes#generate_color_map(s:n_a, s:b, s:c, s:x, s:y, s:z)
+  let a:palette.insert = airline#themes#generate_color_map(s:i_a, s:b, s:c, s:x, s:y, s:z)
+  let a:palette.visual = airline#themes#generate_color_map(s:v_a, s:b, s:c, s:x, s:y, s:z)
+  let a:palette.normal.airline_error = [s:bg_dark, s:error, "", ""]
+  let a:palette.normal.airline_warning = [s:bg_dark, s:warning, "", ""]
+
+  let a:palette.normal.airline_tabsel = [s:normal, s:bg, "", ""]
+  let a:palette.normal.airline_tabmod = [s:insert, s:bg, "", ""]
+endfunction
+
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+let g:airline_mode_map = { 'n': 'N', 'i': 'I', 'v': 'V', 'c': 'C' }
+
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-
-let g:airline_extensions = ['tabline', 'ale']
-
-let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
-let g:airline#extensions#ale#enabled = 1
-
 let g:SuperTabDefaultCompletionType = '<c-n>'
 
 set termguicolors
+let &t_8f = "\[38;2;%lu;%lu;%lum"
+let &t_8b = "\[48;2;%lu;%lu;%lum"
 
-colorscheme libertine
-highlight CursorLine guibg=#303030
-
-highlight Comment gui=italic
-highlight NonText guifg=#000000
+colorscheme eclectic
 
 set colorcolumn=80,99
-highlight ColorColumn guibg=#2f2f2f
-
-highlight ALEError guifg=#ce253e gui=bold
-highlight ALEErrorSign guifg=#ce253e gui=bold
-
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -146,6 +172,9 @@ nnoremap <leader>u viwu
 "cycle through open buffers
 nnoremap + :bn<cr>
 nnoremap _ :bp<cr>
+
+" hide search matches
+nnoremap <leader>/ :nohlsearch<cr>
 
 " quick scroll down/up
 nnoremap J Lzz
@@ -198,6 +227,12 @@ nnoremap <leader>ds :ALEDocumentation<cr>
 nnoremap <leader>gd :ALEGoToDefinition<cr>
 
 nnoremap <leader>p :! yarn pretty-fix<cr>
+
+" color schema debugging
+nnoremap <leader>, :colorscheme eclectic<cr>
+nnoremap <leader>. :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
+  \ . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+  \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Autocommands
 autocmd FileType javascript nnoremap <buffer> cl iconsole.log()<esc>i
