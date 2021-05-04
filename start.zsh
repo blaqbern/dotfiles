@@ -1,25 +1,37 @@
-DOTFILES=~/code/dotfiles
+dotfiles=$HOME/code/dotfiles
 
-# prepend custom zsh config to ~/.zshrc
-{echo "source $DOTFILES/zshrc"; cat ~/.zshrc;} >! temp && mv temp ~/.zshrc
+prepend_zshrc_to_existing () {
+  mv $HOME/.zshrc temp
+  echo "source $dotfiles/zshrc" >| $HOME/.zshrc
+  cat temp >> $HOME/.zshrc
+  rm temp
+}
 
-# append custom gitconfig to existing ~/.gitconfig
-printf "\n" >> ~/.gitconfig
-cat $DOTFILES/gitconfig >> ~/.gitconfig
+append_gitconfig_to_existing () {
+  printf "\n" >> $HOME/.gitconfig
+  cat $dotfiles/gitconfig >> $HOME/.gitconfig
+}
 
 # dein - neovim plugin manager
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > $DOTFILES/installer.sh
-sh $DOTFILES/installer.sh ~/.vim/bundle
-rm $DOTFILES/installer.sh
+setup_dein () {
+  curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > $dotfiles/installer.sh
+  local dein_bundle_dir=$HOME/.vim/bundle
 
-# create neovim config directory, if it doesn't exist
-if [[ ! -a ~/.config/nvim ]]; then
-  mkdir ~/.config/nvim
-fi
+  [[ ! -d $dein_bundle_dir ]] && mkdir -p $dein_bundle_dir
 
-echo "source $DOTFILES/init.vim" >! ~/.config/nvim/init.vim
-echo "source $DOTFILES/init.vim" >! ~/.vimrc
+  sh $dotfiles/installer.sh $dein_bundle_dir
+  rm $dotfiles/installer.sh
+}
 
-# change colorscheme for vim to distinguish from nvim
-curl https://raw.githubusercontent.com/AlessandroYorba/Sierra/master/colors/sierra.vim > ~/.vim/colors/sierra.vim
-echo "colorscheme sierra" >> ~/.vimrc
+setup_neovim () {
+  # create neovim config directory, if it doesn't exist
+  local nvim_cfg_dir=$HOME/.config/nvim
+  [[ ! -d $nvim_cfg_dir ]] && mkdir -p $nvim_cfg_dir
+
+  echo "source $dotfiles/vim/init.vim" >! $nvim_cfg_dir/init.vim
+  echo "source $dotfiles/vim/vimrc" >! $HOME/.vimrc
+
+  # change colorscheme for vim to distinguish from nvim
+  curl https://raw.githubusercontent.com/AlessandroYorba/Sierra/master/colors/sierra.vim > $HOME/.vim/colors/sierra.vim
+  echo "colorscheme sierra" >> $HOME/.vimrc
+}
