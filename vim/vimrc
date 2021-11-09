@@ -3,6 +3,8 @@ syntax enable
 
 let g:ale_sign_error = '》' " other options: ⊳⨯∗⊱
 let g:ale_linters = { 'typescript': ['eslint', 'tsserver'] }
+let g:ale_fixers = { 'go': ['gofmt', 'goimports'] }
+let g:ale_fix_on_save = 1
 let g:ale_set_balloons = 1
 
 let g:airline_theme = 'minimalist'
@@ -12,15 +14,24 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 
 function! AirlineThemePatch(palette) 
-  let s:bg_dark = "#2a2d30"
-  let s:bg = "#36393e"
-  let s:normal = "#469c91"
-  let s:insert = "#cea149"
-  let s:visual = "#9c8db1"
-  let s:fg = "#d9dec3"
-  let s:accent = "#b75c8b"
-  let s:error = "#d72862"
-  let s:warning = "#f6b961"
+  let s:black_coffee = "#403233"
+  let s:raisin_black = "#2b2222"
+  let s:turquoise_green = "#98d9c2"
+  let s:wisteria = "#bba9d6"
+  let s:light_orange = "#f6cda2"
+  let s:light_gray = "#dbd1d1"
+  let s:amaranth = "#e93559"
+  let s:maize_crayola = "#ebc94c"
+
+  let s:bg_dark = s:raisin_black
+  let s:bg = s:black_coffee
+  let s:normal = s:turquoise_green
+  let s:insert = s:wisteria
+  let s:visual = s:light_orange
+  let s:fg = s:light_gray
+  let s:accent = s:wisteria
+  let s:error = s:amaranth
+  let s:warning = s:maize_crayola
 
   let s:n_a = [s:bg, s:normal, "", ""]
   let s:i_a = [s:bg, s:insert, "", ""]
@@ -60,7 +71,7 @@ set termguicolors
 let &t_8f = "\[38;2;%lu;%lu;%lum"
 let &t_8b = "\[48;2;%lu;%lu;%lum"
 
-colorscheme eclectic
+colorscheme amaro
 
 set colorcolumn=80,99
 set tabstop=2
@@ -71,7 +82,7 @@ set autoindent
 set relativenumber
 set number
 set list
-set listchars=tab:>>,eol:¬,space:·,trail:!
+set listchars=tab:>\ ,eol:¬,space:·,trail:!
 set showmatch
 set showcmd
 set wildmenu

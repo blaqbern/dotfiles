@@ -9,7 +9,7 @@ precmd () {
 }
 
 build_prompt () {
-  local l_prompt_components=( $(blue %~) $(yellow ⏾) '' )
+  local l_prompt_components=( $(blue %~) $(yellow ℤ) '' )
   local r_prompt_components=$(build_r_prompt)
 
   PROMPT=${l_prompt_components[@]}
@@ -41,7 +41,7 @@ build_r_prompt () {
 }
 
 git_status_badges () {
-  local badge=⩍
+  local badge=✶ # U+2736
   local status_badges=()
 
   local git_status=$(git status 2>/dev/null)

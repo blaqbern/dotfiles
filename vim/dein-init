@@ -35,7 +35,8 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('dense-analysis/ale')
 
   " themes
-  " call dein#add('blaqbern/eclectic-vim')
+  call dein#add('blaqbern/eclectic-vim')
+  call dein#add('blaqbern/amaro-vim')
   call dein#add('rdavison/Libertine')
   call dein#add('AlessandroYorba/Sierra')
   call dein#add('AlessandroYorba/Arcadia')
