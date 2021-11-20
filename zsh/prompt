@@ -23,12 +23,16 @@ build_r_prompt () {
     local current_branch=$(get_current_branch_name)
     local default_branch=$(get_default_branch_name)
 
+    local rebase_merge_status=$(show_merge_or_rebase)
     local status_badges=$(git_status_badges)
     local stash_badge=$(git_stash_badge)
     local vs_origin_default=$(compare_origin_ref $default_branch)
     local vs_origin_current=$(compare_origin_ref $current_branch)
 
-    components=( $(blue $current_branch) )
+    components=(
+      $rebase_merge_status
+      $(blue $current_branch)
+    )
     [[ -n $status_badges ]] && components+=( $status_badges )
     [[ -n $stash_badge ]] && components+=( $stash_badge )
     [[ -n $vs_origin_default ]] && components=( $(cyan $vs_origin_default) ${components[@]} )
@@ -78,5 +82,22 @@ compare_origin_ref () {
     fi
   else
     echo ∅
+  fi
+}
+
+show_merge_or_rebase () {
+  if [[ -a .git ]]; then
+    local merge_rebase_status
+    local b
+
+    if [[ -d .git/rebase-apply || -f .git/rebase-merge/interactive ]]; then
+      merge_rebase_status="⸨ REBASE ⸩"
+    elif [[ -f .git/MERGE_HEAD ]]; then
+      merge_rebase_status="⸨ MERGE ⸩"
+    fi
+
+    if [[ -n $merge_rebase_status ]]; then
+      echo $(yellow $merge_rebase_status)
+    fi
   fi
 }
