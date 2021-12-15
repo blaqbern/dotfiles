@@ -82,7 +82,7 @@ set autoindent
 set relativenumber
 set number
 set list
-set listchars=tab:>\ ,eol:¬,space:·,trail:!
+set listchars=tab:│\ ,eol:¬,space:·,trail:!
 set showmatch
 set showcmd
 set wildmenu
@@ -178,6 +178,7 @@ inoremap jk <esc>
 " ale: show docs for what's currently under the cursor (ts only)
 nnoremap <leader>ds :ALEDocumentation<cr>
 nnoremap <leader>gd :ALEGoToDefinition<cr>
+nnoremap <leader>gg :ALEHover<cr>
 
 nnoremap <leader>p :! yarn pretty-fix<cr>
 
@@ -189,6 +190,7 @@ nnoremap <leader>. :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
 
 " Autocommands
 autocmd FileType javascript nnoremap <buffer> cl iconsole.log()<esc>i
+autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 set directory^=$HOME/.vim/swap_files/
 
