@@ -1,3 +1,5 @@
+set runtimepath+=~/.vim/bundle/repos/github.com/blaqbern/eclectic-vim/colors
+
 filetype plugin indent on
 syntax enable
 
@@ -71,7 +73,11 @@ set termguicolors
 let &t_8f = "\[38;2;%lu;%lu;%lum"
 let &t_8b = "\[48;2;%lu;%lu;%lum"
 
-colorscheme amaro
+colorscheme eclectic
+
+if has('nvim')
+  colorscheme amaro
+endif
 
 set colorcolumn=120
 set tabstop=2
