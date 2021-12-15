@@ -30,8 +30,4 @@ setup_neovim () {
 
   echo "source $dotfiles/vim/init.vim" >! $nvim_cfg_dir/init.vim
   echo "source $dotfiles/vim/vimrc" >! $HOME/.vimrc
-
-  # change colorscheme for vim to distinguish from nvim
-  curl https://raw.githubusercontent.com/AlessandroYorba/Sierra/master/colors/sierra.vim > $HOME/.vim/colors/sierra.vim
-  echo "colorscheme sierra" >> $HOME/.vimrc
 }
