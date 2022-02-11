@@ -1,4 +1,5 @@
-set runtimepath+=~/.vim/bundle/repos/github.com/blaqbern/eclectic-vim/colors
+set runtimepath+=~/.vim/bundle/repos/github.com/blaqbern/eclectic-vim
+set runtimepath+=~/.vim/bundle/repos/github.com/blaqbern/dracula
 
 filetype plugin indent on
 syntax enable
@@ -96,6 +97,9 @@ set splitbelow
 set splitright
 set hidden
 set mouse=a
+
+" disable K for docs in vim-go
+let g:go_doc_keywordprg_enabled = 0
 
 " disable arrow keys
 nnoremap <Up> <nop>

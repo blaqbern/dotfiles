@@ -28,6 +28,7 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
 
+  call dein#add('fatih/vim-go')
   call dein#add('pangloss/vim-javascript')
   call dein#add('jparise/vim-graphql')
   call dein#add('mxw/vim-jsx')
@@ -55,4 +56,5 @@ if dein#check_install()
 endif
 
 let g:deoplete#enable_at_startup = 1
+set completeopt-=preview " don't open preview window with docs on autocomplete
 call deoplete#custom#option('sources', { '_': ['ale'] })
