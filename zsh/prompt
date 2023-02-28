@@ -35,7 +35,7 @@ build_r_prompt () {
     )
     [[ -n $status_badges ]] && components+=( $status_badges )
     [[ -n $stash_badge ]] && components+=( $stash_badge )
-    [[ -n $vs_origin_default ]] && components=( $(cyan $vs_origin_default) ${components[@]} )
+    [[ -n $vs_origin_default ]] && components=( $(yellow $vs_origin_default) ${components[@]} )
     [[ -n $vs_origin_current ]] && components=( $(magenta $vs_origin_current) ${components[@]} )
   else
     components=( $(yellow ×) )

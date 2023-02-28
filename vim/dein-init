@@ -30,7 +30,6 @@ if dein#load_state('~/.vim/bundle')
 
   call dein#add('fatih/vim-go')
   call dein#add('pangloss/vim-javascript')
-  call dein#add('jparise/vim-graphql')
   call dein#add('mxw/vim-jsx')
 
   call dein#add('dense-analysis/ale')
@@ -38,13 +37,11 @@ if dein#load_state('~/.vim/bundle')
   " themes
   call dein#add('blaqbern/eclectic-vim')
   call dein#add('blaqbern/amaro-vim')
+  call dein#add('blaqbern/amaro-light-vim')
   call dein#add('rdavison/Libertine')
   call dein#add('AlessandroYorba/Sierra')
   call dein#add('AlessandroYorba/Arcadia')
   call dein#add('AlessandroYorba/Despacio')
-  call dein#add('nightsense/vrunchbang')
-  call dein#add('nightsense/forgotten')
-  call dein#add('nightsense/office')
 
   call dein#end()
   call dein#save_state()

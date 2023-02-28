@@ -5,8 +5,8 @@ filetype plugin indent on
 syntax enable
 
 let g:ale_sign_error = '》' " other options: ⊳⨯∗⊱
-let g:ale_linters = { 'typescript': ['eslint', 'tsserver'] }
-let g:ale_fixers = { 'go': ['gofmt', 'goimports'] }
+let g:ale_linters = { 'typescript': ['tsserver'] }
+let g:ale_fixers = { 'go': ['gofmt', 'goimports'], 'typescript': ['prettier', 'eslint'] }
 let g:ale_fix_on_save = 1
 let g:ale_set_balloons = 1
 
@@ -74,8 +74,6 @@ set termguicolors
 let &t_8f = "\[38;2;%lu;%lu;%lum"
 let &t_8b = "\[48;2;%lu;%lu;%lum"
 
-colorscheme eclectic
-
 if has('nvim')
   colorscheme amaro
 endif
@@ -89,7 +87,7 @@ set autoindent
 set relativenumber
 set number
 set list
-set listchars=tab:│\ ,eol:¬,space:·,trail:!
+set listchars=tab:│\ ,eol:°,space:·,trail:!
 set showmatch
 set showcmd
 set wildmenu
@@ -98,8 +96,16 @@ set splitright
 set hidden
 set mouse=a
 
-" disable K for docs in vim-go
-let g:go_doc_keywordprg_enabled = 0
+" vim-go
+nnoremap <leader>i :GoImplements<cr> :lop<cr>
+nnoremap <leader>q :GoCallers<cr> :lop<cr>
+nnoremap <leader>T :GoTestFunc -tags launchdarkly_easyjson<cr>
+let g:go_doc_keywordprg_enabled = 0 " disable K for docs
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
 
 " disable arrow keys
 nnoremap <Up> <nop>
@@ -123,6 +129,7 @@ nnoremap <leader>sv :so $MYVIMRC<cr>
 
 " toggle NERDTree
 nnoremap <leader>t :NERDTreeToggle<cr>
+nnoremap <leader>c :NERDTreeFind<cr>
 
 " toggle location list
 nnoremap <leader>d :lop<cr>
@@ -185,6 +192,9 @@ nnoremap <C-l> <C-w>l
 " map `jk` to <esc> in insert mode
 inoremap jk <esc>
 
+" Go helpers
+" nnoremap <leader>gi :GoImplements<cr>
+
 " ale: show docs for what's currently under the cursor (ts only)
 nnoremap <leader>ds :ALEDocumentation<cr>
 nnoremap <leader>gd :ALEGoToDefinition<cr>
@@ -193,10 +203,11 @@ nnoremap <leader>gg :ALEHover<cr>
 nnoremap <leader>p :! yarn pretty-fix<cr>
 
 " color schema debugging
-nnoremap <leader>, :colorscheme eclectic<cr>
+nnoremap <leader>, :colorscheme amaro<cr>
 nnoremap <leader>. :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
   \ . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
   \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+nnoremap <leader>n call s:show_syn_stack()
 
 " Autocommands
 autocmd FileType javascript nnoremap <buffer> cl iconsole.log()<esc>i
