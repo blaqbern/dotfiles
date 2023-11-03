@@ -31,6 +31,7 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('fatih/vim-go')
   call dein#add('pangloss/vim-javascript')
   call dein#add('mxw/vim-jsx')
+  call dein#add('hashivim/vim-terraform')
 
   call dein#add('dense-analysis/ale')
 

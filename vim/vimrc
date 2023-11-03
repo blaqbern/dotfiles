@@ -9,6 +9,7 @@ let g:ale_linters = { 'typescript': ['tsserver'] }
 let g:ale_fixers = { 'go': ['gofmt', 'goimports'], 'typescript': ['prettier', 'eslint'] }
 let g:ale_fix_on_save = 1
 let g:ale_set_balloons = 1
+let g:ale_use_neovim_diagnotics_api = 0
 
 let g:airline_theme = 'minimalist'
 
@@ -70,15 +71,14 @@ let g:airline#extensions#tabline#right_alt_sep = ''
 
 let g:SuperTabDefaultCompletionType = '<c-n>'
 
-set termguicolors
-let &t_8f = "\[38;2;%lu;%lu;%lum"
-let &t_8b = "\[48;2;%lu;%lu;%lum"
-
 if has('nvim')
+  set termguicolors
+  let &t_8f = "\[38;2;%lu;%lu;%lum" " do we really need this?
+  let &t_8b = "\[48;2;%lu;%lu;%lum" " do we really need this?
   colorscheme amaro
 endif
 
-set colorcolumn=120
+set colorcolumn=100
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -106,6 +106,9 @@ let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
+
+" vim-terraform
+let g:terraform_fmt_on_save = 1
 
 " disable arrow keys
 nnoremap <Up> <nop>
