@@ -4,18 +4,10 @@ set runtimepath+=~/.vim/bundle/repos/github.com/blaqbern/dracula
 filetype plugin indent on
 syntax enable
 
-let g:ale_sign_error = '》' " other options: ⊳⨯∗⊱
-let g:ale_linters = { 'typescript': ['tsserver'] }
-let g:ale_fixers = { 'go': ['gofmt', 'goimports'], 'typescript': ['prettier', 'eslint'] }
-let g:ale_fix_on_save = 1
-let g:ale_set_balloons = 1
-let g:ale_use_neovim_diagnotics_api = 0
-
 let g:airline_theme = 'minimalist'
 
-let g:airline_extensions = ['tabline', 'ale']
+let g:airline_extensions = ['tabline']
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#ale#enabled = 1
 
 function! AirlineThemePatch(palette) 
   let s:black_coffee = "#403233"
@@ -75,7 +67,7 @@ if has('nvim')
   set termguicolors
   let &t_8f = "\[38;2;%lu;%lu;%lum" " do we really need this?
   let &t_8b = "\[48;2;%lu;%lu;%lum" " do we really need this?
-  colorscheme amaro
+  colorscheme eclectic
 endif
 
 set colorcolumn=100
@@ -96,7 +88,13 @@ set splitright
 set hidden
 set mouse=a
 
+" ocaml indent config or whatever
+set rtp^="/Users/chrisblackburn/.opam/default/share/ocp-indent/vim"
+
 " vim-go
+" disable all linters as that is taken care of by coc.nvim
+let g:go_diagnostics_enabled = 0
+let g:go_metalinter_enabled = []
 nnoremap <leader>i :GoImplements<cr> :lop<cr>
 nnoremap <leader>q :GoCallers<cr> :lop<cr>
 nnoremap <leader>T :GoTestFunc -tags launchdarkly_easyjson<cr>
@@ -125,6 +123,21 @@ nnoremap <C-p> :Files<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>e :Acks<space>
 
+" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <silent><expr> <S-TAB>
+      \ coc#pum#visible() ? coc#pum#prev(1) :
+      \ coc#refresh()
+
 " edit vimrc file
 nnoremap <leader>ev :vs $MYVIMRC<cr>
 " source vimrc file
@@ -135,7 +148,7 @@ nnoremap <leader>t :NERDTreeToggle<cr>
 nnoremap <leader>c :NERDTreeFind<cr>
 
 " toggle location list
-nnoremap <leader>d :lop<cr>
+nnoremap <leader>d :CocDiagnostics<cr>
 nnoremap <leader>f :lcl<cr>
 
 " to upper and to lower on word
@@ -197,13 +210,6 @@ inoremap jk <esc>
 
 " Go helpers
 " nnoremap <leader>gi :GoImplements<cr>
-
-" ale: show docs for what's currently under the cursor (ts only)
-nnoremap <leader>ds :ALEDocumentation<cr>
-nnoremap <leader>gd :ALEGoToDefinition<cr>
-nnoremap <leader>gg :ALEHover<cr>
-
-nnoremap <leader>p :! yarn pretty-fix<cr>
 
 " color schema debugging
 nnoremap <leader>, :colorscheme amaro<cr>
