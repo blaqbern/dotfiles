@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 vim.keymap.set("i", "jk", "<Esc>")
-
 vim.keymap.set("n", "<leader>t", vim.cmd.Ex)
 
 vim.keymap.set("n", "<leader>u", "viwu")
@@ -41,5 +40,5 @@ vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
-vim.keymap.set("n", "<leader>g", vim.cmd.lop) 
-vim.keymap.set("n", "<leader>f", vim.cmd.lcl) 
+vim.keymap.set("n", "<leader>g", vim.cmd.lop)
+vim.keymap.set("n", "<leader>f", vim.cmd.lcl)

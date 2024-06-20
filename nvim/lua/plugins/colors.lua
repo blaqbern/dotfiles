@@ -1,6 +1,4 @@
-function SetColors(colorscheme)
-	colorscheme = colorscheme or "amaro"
-	vim.cmd.colorscheme(colorscheme)
-end
-
-SetColors()
+return {
+	"blaqbern/eclectic-vim",
+	"blaqbern/amaro-vim",
+}
