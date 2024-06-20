@@ -1,0 +1,12 @@
+{
+  "amaro-vim": { "branch": "main", "commit": "8497adb17e4a0fb90932ebae206b2068a9680dba" },
+  "eclectic-vim": { "branch": "master", "commit": "abe1097ee29180de7b763e2dfec38062d87b879e" },
+  "gitsigns.nvim": { "branch": "main", "commit": "def49e48c6329527e344d0c99a0d2cd9fdf6bb84" },
+  "lazy.nvim": { "branch": "main", "commit": "bc620783663ab09d16bff9fdecc07da65b2a1528" },
+  "nvim-treesitter": { "branch": "master", "commit": "4bbd2e72f877ce6835c8ccc1b588ed465446c6ab" },
+  "nvim-treesitter-textobjects": { "branch": "master", "commit": "34867c69838078df7d6919b130c0541c0b400c47" },
+  "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
+  "telescope.nvim": { "branch": "master", "commit": "6312868392331c9c0f22725041f1ec2bef57c751" },
+  "vim-commentary": { "branch": "master", "commit": "c4b8f52cbb7142ec239494e5a2c4a512f92c4d07" },
+  "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" }
+}
