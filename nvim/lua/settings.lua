@@ -16,11 +16,11 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.scrolloff = 30
+vim.opt.scrolloff = 10
 
 vim.opt.updatetime = 500
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "80,120"
 vim.opt.signcolumn = "yes"
 
 vim.opt.termguicolors = true

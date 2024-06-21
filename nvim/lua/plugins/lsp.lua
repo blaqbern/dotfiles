@@ -15,78 +15,67 @@ return {
 
 	config = function()
 		local cmp = require("cmp")
-		local cmp_lsp = require("cmp_nvim_lsp")
 		local capabilities = vim.tbl_deep_extend(
 			"force",
 			{},
 			vim.lsp.protocol.make_client_capabilities(),
-			cmp_lsp.default_capabilities()
+			require("cmp_nvim_lsp").default_capabilities()
 		)
 
-		require("fidget").setup({})
-		require("mason").setup()
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"lua_ls",
-				"gopls",
-			},
-			handlers = {
-				function(server_name) -- default handler (optional)
-
-					require("lspconfig")[server_name].setup {
-						capabilities = capabilities
-					}
-				end,
-
-				["lua_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.lua_ls.setup {
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-					runtime = { version = "Lua 5.1" },
-								diagnostics = {
-									globals = { "vim", "it", "describe", "before_each", "after_each" },
-								}
-							}
-						}
-					}
-				end,
-			}
-		})
-
-		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-		cmp.setup({
+		cmp.setup {
 			snippet = {
 				expand = function(args)
-					require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+					require("luasnip").lsp_expand(args.body)
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<S-tab>"] = cmp.mapping.select_prev_item(cmp_select),
-				["<tab>"] = cmp.mapping.select_next_item(cmp_select),
-				["<enter>"] = cmp.mapping.confirm({ select = true }),
-				["<C-Space>"] = cmp.mapping.complete(),
+				["<S-tab>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+				["<tab>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select  },
+				["<right>"] = cmp.mapping.confirm { select = true },
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				{ name = "luasnip" }, -- For luasnip users.
+				{ name = "luasnip" },
 			}, {
 				{ name = "buffer" },
 			})
-		})
+		}
 
-		vim.diagnostic.config({
-			-- update_in_insert = true,
-			float = {
-				focusable = false,
-				style = "minimal",
-				border = "rounded",
-				source = "always",
-				header = "",
-				prefix = "",
-			},
-		})
+		local on_attach = function(_, bufnr)
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
+			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr })
+			vim.keymap.set("n", "<leader>re", vim.lsp.buf.rename, { buffer = bufnr })
+		end
+
+		require("fidget").setup {}
+		require("mason").setup {}
+		require("mason-lspconfig").setup {
+			ensure_installed = { "lua_ls", "gopls", "tsserver" },
+			handlers = {
+				function(server_name)
+					require("lspconfig")[server_name].setup {
+						capabilities = capabilities,
+						on_attach = on_attach,
+					}
+				end,
+
+				lua_ls = function()
+					require("lspconfig").lua_ls.setup {
+						capabilities = capabilities,
+						on_attach = on_attach,
+						settings = {
+							Lua = {
+								diagnostics = {
+									globals = { "vim" },
+								},
+							},
+						},
+					}
+				end,
+			}
+		}
+
+		-- manage ocamllsp manually, since it gives mason trouble
+		require("lspconfig").ocamllsp.setup {}
 	end
 }
