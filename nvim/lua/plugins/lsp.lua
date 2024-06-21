@@ -15,6 +15,7 @@ return {
 
 	config = function()
 		local cmp = require("cmp")
+
 		local capabilities = vim.tbl_deep_extend(
 			"force",
 			{},
