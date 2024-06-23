@@ -30,9 +30,10 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<S-tab>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
-				["<tab>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select  },
-				["<right>"] = cmp.mapping.confirm { select = true },
+				["<up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+				["<down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+				["<tab>"] = cmp.mapping.confirm({ select = true }),
+				["<S-tab>"] = cmp.mapping.abort(),
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
@@ -67,7 +68,7 @@ return {
 						settings = {
 							Lua = {
 								diagnostics = {
-									globals = { "vim" },
+									globals = { "vim", "format_sync_grp" },
 								},
 							},
 						},
