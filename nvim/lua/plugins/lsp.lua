@@ -68,7 +68,7 @@ return {
 						settings = {
 							Lua = {
 								diagnostics = {
-									globals = { "vim", "format_sync_grp" },
+									globals = { "vim" },
 								},
 							},
 						},
