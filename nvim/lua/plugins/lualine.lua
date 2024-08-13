@@ -13,6 +13,7 @@ return {
 			"filename",
 			file_status = true,
 			color = "Operator",
+			path = 1,
 			symbols = { modified = "⊙", readonly = "∅", unnamed = "-" },
 		}
 		local location = { "location", color = "Operator" }
