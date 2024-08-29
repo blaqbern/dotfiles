@@ -1,4 +1,4 @@
 require("settings")
 require("keymaps")
 require("lazy_init")
-require("theme").SetTheme("eclectic")
+require("theme").SetTheme("carbonicus")
