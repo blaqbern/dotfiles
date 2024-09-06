@@ -10,10 +10,13 @@ return {
 					preview_width = 0.65,
 					horizontal = {
 						size = {
-							width = "80%",
-							height = "80%",
+							width = "95%",
+							height = "95%",
 						},
 					},
+				},
+				path_display = {
+					shorten = { len = 1, exclude = { 1, -1 } },
 				},
 			},
 		})
