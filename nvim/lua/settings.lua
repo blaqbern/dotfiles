@@ -27,8 +27,8 @@ vim.opt.termguicolors = true
 
 vim.opt.list = true
 vim.opt.listchars = {
-  space = "·",
-  eol = "⌜",
-  trail = "❢",
-  tab = "⋮ "
+	space = "·",
+	eol = "⌜",
+	trail = "❢",
+	tab = "⋮ "
 }
