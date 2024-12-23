@@ -49,6 +49,7 @@ return {
       vim.keymap.set("n", "<leader>re", vim.lsp.buf.rename, { buffer = bufnr })
       vim.keymap.set("n", "<leader>i", vim.lsp.buf.incoming_calls, { buffer = bufnr })
       vim.keymap.set("n", "<leader>o", vim.lsp.buf.outgoing_calls, { buffer = bufnr })
+      vim.keymap.set("n", "<leader>rf", vim.lsp.buf.references, { buffer = bufnr })
     end
 
     require("fidget").setup {}
