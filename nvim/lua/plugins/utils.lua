@@ -1,5 +1,5 @@
-return {
-  "tpope/vim-surround",
-  "tpope/vim-commentary",
-  "jiangmiao/auto-pairs",
+vim.pack.add {
+  "https://github.com/tpope/vim-surround",
+  "https://github.com/tpope/vim-commentary",
+  "https://github.com/jiangmiao/auto-pairs",
 }

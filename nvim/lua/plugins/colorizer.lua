@@ -1,6 +1,2 @@
-return {
-  "norcalli/nvim-colorizer.lua",
-  config = function ()
-    require("colorizer").setup({ lua = { mode = "foreground" } })
-  end
-}
+vim.pack.add { "https://github.com/norcalli/nvim-colorizer.lua.git" }
+require("colorizer").setup({ lua = { mode = "foreground" } })

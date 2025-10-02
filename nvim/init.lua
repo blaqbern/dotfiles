@@ -1,6 +1,15 @@
-require("settings")
-require("keymaps")
-require("lazy_init")
-require("autocmd")
-require("misc")
-require("theme").SetTheme("carbonicus")
+require "config.settings"
+require "config.keymaps"
+require "config.lsp"
+require "config.diagnostic"
+require "config.autocmd"
+require "config.misc"
+
+require "plugins.bernicus-themes"
+require "plugins.colorizer"
+require "plugins.gitsigns"
+require "plugins.go"
+require "plugins.lualine"
+require "plugins.telescope"
+require "plugins.treesitter"
+require "plugins.utils"
