@@ -7,6 +7,7 @@ require "config.misc"
 
 require "plugins.bernicus-themes"
 require "plugins.colorizer"
+require "plugins.formatter"
 require "plugins.gitsigns"
 require "plugins.go"
 require "plugins.lualine"
