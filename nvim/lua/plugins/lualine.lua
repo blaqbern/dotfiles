@@ -1,5 +1,7 @@
 vim.pack.add { "https://github.com/nvim-lualine/lualine.nvim.git" }
 
+local palette = require("blaqbern.palettes").setup "amaro"
+
 local buffers = {
   "buffers",
   show_filename_only = false,
@@ -8,14 +10,10 @@ local buffers = {
   buffers_color = { active = "TablineSel", inactive = "Tabline" },
   symbols = { modified = " ⊙", alternate_file = "" },
 }
-local filename = {
-  "filename",
-  file_status = true,
-  color = "Operator",
-  path = 1,
-  symbols = { modified = "⊙", readonly = "∅", unnamed = "-" },
+local location = {
+  "location",
+  color = { bg = palette.bg_dark3, fg = palette.bg_light2 },
 }
-local location = { "location", color = "Operator" }
 
 require("lualine").setup {
   options = {
@@ -32,6 +30,6 @@ require("lualine").setup {
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = { filename, location },
+    lualine_z = { location },
   },
 }
